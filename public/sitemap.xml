@@ -1,11 +1,23 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>http://timrossinfo.github.com/about-me/</loc>
+        <lastmod>2013-03-18T10:43:13+13:00</lastmod>
+    </url>
+    <url>
         <loc>http://timrossinfo.github.com/blog/archives/</loc>
         <lastmod>2013-03-18T10:25:10+13:00</lastmod>
     </url>
     <url>
+        <loc>http://timrossinfo.github.com/contact/</loc>
+        <lastmod>2013-03-18T10:44:40+13:00</lastmod>
+    </url>
+    <url>
         <loc>http://timrossinfo.github.com/</loc>
         <lastmod>2013-03-18T10:25:10+13:00</lastmod>
+    </url>
+    <url>
+        <loc>http://timrossinfo.github.com/projects/</loc>
+        <lastmod>2013-03-18T10:43:29+13:00</lastmod>
     </url>
 </urlset>
