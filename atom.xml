@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-19T11:34:44+13:00</updated>
+  <updated>2013-03-19T11:43:16+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -127,7 +127,7 @@
 
 <p>That replaces all the previous code! Feels much simpler, doesn&#8217;t it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there&#8217;s no &#8220;visual&#8221; representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.</p>
 
-<p>So should you ditch using segues? Not necessarily. They can definitely save time of you are transitioning between static views. But there may be cases where it&#8217;s cleaner and simpler to do a manual transition rather than use a segue.</p>
+<p>So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it&#8217;s cleaner and simpler to do a manual transition rather than use a segue.</p>
 
 <p>Segues are a step in the right direction, the less code we have to write the better! Hopefully they&#8217;ll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.</p>
 ]]></content>
