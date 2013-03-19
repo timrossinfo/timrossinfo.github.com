@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-19T18:12:36+13:00</updated>
+  <updated>2013-03-19T18:21:58+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -101,7 +101,7 @@
 
 <p>Phew, that ended up being quite complicated.</p>
 
-<p>Now, let's look at the "traditional" way of transitioning using just code:</p>
+<p>Now, let's look at the "traditional" way of coding a transition without segues using <code>pushViewController</code>:</p>
 
 <p>``` objective-c
 - (void)tableView:(UITableView <em>)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath </em>)indexPath {</p>

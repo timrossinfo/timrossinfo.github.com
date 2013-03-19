@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-19T18:12:36+13:00</updated>
+  <updated>2013-03-19T18:21:58+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -108,7 +108,7 @@
 
 <p>Phew, that ended up being quite complicated.</p>
 
-<p>Now, let&#8217;s look at the &#8220;traditional&#8221; way of transitioning using just code:</p>
+<p>Now, let&#8217;s look at the &#8220;traditional&#8221; way of coding a transition without segues using <code>pushViewController</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
