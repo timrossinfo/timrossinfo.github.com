@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-19T16:01:08+13:00</updated>
+  <updated>2013-03-19T18:12:36+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -24,7 +24,7 @@
 
 <ul>
 <li>Spend less time writing boring transition code.</li>
-<li>Code is cleaner and not littered with transition code.</li>
+<li>Code is cleaner and not littered with transitions.</li>
 <li>You get a visual representation of how the app fits together.</li>
 </ul>
 
