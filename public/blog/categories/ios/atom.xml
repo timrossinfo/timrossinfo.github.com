@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: iOS | Tim Ross]]></title>
+  <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
+  <link href="http://timrossinfo.github.com/"/>
+  <updated>2013-03-19T15:33:03+13:00</updated>
+  <id>http://timrossinfo.github.com/</id>
+  <author>
+    <name><![CDATA[Tim Ross]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[To Segue or Not to Segue]]></title>
+    <link href="http://timrossinfo.github.com/blog/2013/03/19/to-segue-or-not-to-segue/"/>
+    <updated>2013-03-19T10:38:00+13:00</updated>
+    <id>http://timrossinfo.github.com/blog/2013/03/19/to-segue-or-not-to-segue</id>
+    <content type="html"><![CDATA[<p>iOS 5 introduced <a href="http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1">Storyboards</a>, which allow you to visually define the flow of an app. The transitions between view controllers in a Storyboard are called "Segues".</p>
+
+<p>Initially, the benefits of using segues seem clear:</p>
+
+<ul>
+<li>Spend less time writing boring transition code.</li>
+<li>Code is cleaner and not littered with transition code.</li>
+<li>You get a visual representation of how the app fits together.</li>
+</ul>
+
+
+<p>However, after using segues for a while I've found there are a few downsides:</p>
+
+<ul>
+<li>The visual layout is restricted. Segues always exit from right of a controller and enter from  the left. For any moderately complex app, you can end up with a storyboard that resembles spaghetti.</li>
+<li>I almost always need to pass data to the controller I'm transitioning to. This requires dropping back to the code to intercept the segue, find the controller, then set its properties.</li>
+<li>I often find I end up writing quite lengthy and obscure code to intercept the segue.</li>
+</ul>
+
+
+<p>Here's a comparison of transitioning using segues versus a traditional approach. In this code I'm handling tapping a detail accessory on a row in a table view, then transitioning to a view controller.</p>
+
+<p>First, I'll use a segue:</p>
+
+<p><img src="/images/segue1.png" width="789"></p>
+
+<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I'm done! Not quite... I also need to assign some data on the controller I'm transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:</p>
+
+<p>``` objective-c
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {</p>
+
+<pre><code>if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
+    ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I'll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
+
+<p>``` objective-c
+- (void)tableView:(UITableView <em>)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath </em>)indexPath {</p>
+
+<pre><code>self.selectedDetailIndexPath = indexPath;
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Now I can use this to assign data to the controller I am transitioning to:</p>
+
+<p>``` objective-c
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {</p>
+
+<pre><code>if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
+    ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+    Contact *contact = [self.contacts objectAtIndex:self.selectedDetailIndexPath.row];
+    controller.contactId = contact.contactId;
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So now I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.</p>
+
+<p><img src="/images/segue2.png" width="789"></p>
+
+<p>Next, I need to call <code>performSegueWithIdentifier</code> to manually trigger the segue in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method</p>
+
+<p>``` objective-c
+- (void)tableView:(UITableView <em>)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath </em>)indexPath {</p>
+
+<pre><code>self.selectedDetailIndexPath = indexPath;
+[self performSegueWithIdentifier:@"ContactDetailSegue" sender:self];
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Phew, that ended up being quite complicated.</p>
+
+<p>Now, let's look at the "traditional" way of transitioning using just code:</p>
+
+<p>``` objective-c
+- (void)tableView:(UITableView <em>)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath </em>)indexPath {</p>
+
+<pre><code>ContactDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactDetailViewController"];
+Contact *contact = [self.contacts objectAtIndex:indexPath.row];
+controller.contactId = contact.contactId;
+[self.navigationController pushViewController:controller animated:YES];
+</code></pre>
+
+<p>}
+```</p>
+
+<p>That replaces all the previous code! Feels much simpler, doesn't it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there's no "visual" representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.</p>
+
+<p>So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it's cleaner and simpler to do a manual transition rather than use a segue.</p>
+
+<p>Segues are a step in the right direction, the less code we have to write the better! Hopefully they'll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.</p>
+]]></content>
+  </entry>
+  
+</feed>

@@ -3,7 +3,7 @@ layout: post
 title: "To Segue or Not to Segue"
 date: 2013-03-19 10:38
 comments: true
-categories: 
+categories: iOS
 ---
 iOS 5 introduced [Storyboards](http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1), which allow you to visually define the flow of an app. The transitions between view controllers in a Storyboard are called "Segues".
 
@@ -25,7 +25,7 @@ First, I'll use a segue:
 
 {% img /images/segue1.png 789 %}
 
-In theory I should just be able to connect a segue from the detail accessory to the next view controller and I'm done! Not quite... I also need to assign some data on the controller I'm transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method and check the segue identifier to ensure I am handling the correct segue:
+In theory I should just be able to connect a segue from the detail accessory to the next view controller and I'm done! Not quite... I also need to assign some data on the controller I'm transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:
 
 ``` objective-c
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -35,7 +35,7 @@ In theory I should just be able to connect a segue from the detail accessory to 
 }
 ```
 
-So I have the controller and now I need to assign data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I'll need to set a instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:
+So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I'll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:
 
 ``` objective-c
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
@@ -55,7 +55,7 @@ Now I can use this to assign data to the controller I am transitioning to:
 }
 ```
 
-But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.
+But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So now I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.
 
 {% img /images/segue2.png 789 %}
 
@@ -81,8 +81,8 @@ Now, let's look at the "traditional" way of transitioning using just code:
 }
 ```
 
-That replaces all the previous code! Feels much simpler, doesn't it? What I like about this is that the transition code is all in one place, not spread across two methods. Anyone who looks at the code will instantly be able to see what's going on. Sure, there's no "visual" representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.
+That replaces all the previous code! Feels much simpler, doesn't it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there's no "visual" representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.
 
-So should you ditch using segues? Not necessarily. They can definitely save time of you are transitioning between static views. But there may be cases where it's cleaner and simpler to do a manual transition rather than use a segue.
+So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it's cleaner and simpler to do a manual transition rather than use a segue.
 
 Segues are a step in the right direction, the less code we have to write the better! Hopefully they'll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.
