@@ -119,7 +119,7 @@
 
 <p><img src="/images/segue1.png" width="789"></p>
 
-<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I&#8217;m done! Not quite&#8230; I also need to assign some data on the controller I&#8217;m transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method and check the segue identifier to ensure I am handling the correct segue:</p>
+<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I&#8217;m done! Not quite&#8230; I also need to assign some data on the controller I&#8217;m transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -134,7 +134,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>So I have the controller and now I need to assign data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I&#8217;ll need to set a instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
+<p>So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I&#8217;ll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -164,7 +164,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.</p>
+<p>But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So now I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.</p>
 
 <p><img src="/images/segue2.png" width="789"></p>
 
