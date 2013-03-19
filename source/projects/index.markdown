@@ -34,4 +34,4 @@ Developed the iPad version of this business training app for the NZ Ministry of 
 
 ### [90 Seconds TV](http://90seconds.tv)
 
-Worked on integrating the [Xero API](http://xero.com) in a Rails workflow-management app.
+Worked on integrating the [Xero API](http://xero.com) in a Rails workflow-management application.

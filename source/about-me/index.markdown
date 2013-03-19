@@ -13,6 +13,6 @@ I taught myself programming on the Commodore 64 when I was 9 years old and creat
 
 In 2006 I followed the path of many young kiwis and moved to London with my girlfriend (now wife) to explore Europe and further my development career. I worked as a contract .NET developer for clients such as the [BBC](http://bbcworldwide.com), [uSwitch.com](http://uswitch.com), [ITV](http://itv.com) and [Vodafone](http://vodafone.co.uk).
 
-After several years we moved back to New Zealand where I co-founded elucidcode, a mobile app development company. We recently launched [Air Pipes](http://airpip.es), a musical instrument app that climbed to number 1 music and number 7 overall paid app in the UK App Store.
+After several years we moved back to New Zealand where I co-founded [elucidcode](http://elucidcode.com), a mobile app development company. We recently launched [Air Pipes](http://airpip.es), a musical instrument app that climbed to number 1 music and number 7 overall paid app on the UK App Store.
 
 I am now enjoying life as an independent developer and consultant working on iOS and Rails apps. In my spare time I enjoy playing guitar, Xbox and making the most of the amazing outdoor lifestyle that New Zealand has to offer.

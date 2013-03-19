@@ -10,7 +10,7 @@ iOS 5 introduced [Storyboards](http://www.raywenderlich.com/5138/beginning-story
 Initially, the benefits of using segues seem clear:
 
 *	Spend less time writing boring transition code.
-*	Code is cleaner and not littered with transition code.
+*	Code is cleaner and not littered with transitions.
 *	You get a visual representation of how the app fits together.
 
 However, after using segues for a while I've found there are a few downsides:
@@ -70,7 +70,7 @@ Next, I need to call <code>performSegueWithIdentifier</code> to manually trigger
 
 Phew, that ended up being quite complicated.
 
-Now, let's look at the "traditional" way of transitioning using just code:
+Now, let's look at the "traditional" way of coding a transition without segues using <code>pushViewController</code>:
 
 ``` objective-c
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
