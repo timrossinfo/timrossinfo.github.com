@@ -30,7 +30,7 @@ In theory I should just be able to connect a segue from the detail accessory to 
 ``` objective-c
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
-        ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+        ContactDetailViewController *controller = segue.destinationViewController;
     }
 }
 ```
@@ -48,9 +48,9 @@ Now I can use this to assign data to the controller I am transitioning to:
 ``` objective-c
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
-        ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+        ContactDetailViewController *controller = segue.destinationViewController;
         Contact *contact = [self.contacts objectAtIndex:self.selectedDetailIndexPath.row];
-        controller.contactId = contact.contactId;
+        controller.contact = contact;
     }
 }
 ```
@@ -76,7 +76,7 @@ Now, let's look at the "traditional" way of coding a transition without segues u
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
     ContactDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactDetailViewController"];
     Contact *contact = [self.contacts objectAtIndex:indexPath.row];
-    controller.contactId = contact.contactId;
+    controller.contact = contact;
     [self.navigationController pushViewController:controller animated:YES];
 }
 ```

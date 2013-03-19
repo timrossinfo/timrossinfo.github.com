@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-19T18:21:58+13:00</updated>
+  <updated>2013-03-19T18:28:47+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -50,7 +50,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {</p>
 
 <pre><code>if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
-    ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+    ContactDetailViewController *controller = segue.destinationViewController;
 }
 </code></pre>
 
@@ -74,9 +74,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {</p>
 
 <pre><code>if ([segue.identifier isEqualToString:@"ContactDetailSegue"]) {
-    ContactDetailViewController *controller = (ContactDetailViewController *)segue.destinationViewController;
+    ContactDetailViewController *controller = segue.destinationViewController;
     Contact *contact = [self.contacts objectAtIndex:self.selectedDetailIndexPath.row];
-    controller.contactId = contact.contactId;
+    controller.contact = contact;
 }
 </code></pre>
 
@@ -108,7 +108,7 @@
 
 <pre><code>ContactDetailViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactDetailViewController"];
 Contact *contact = [self.contacts objectAtIndex:indexPath.row];
-controller.contactId = contact.contactId;
+controller.contact = contact;
 [self.navigationController pushViewController:controller animated:YES];
 </code></pre>
 
