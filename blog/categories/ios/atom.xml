@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-26T10:43:25+13:00</updated>
+  <updated>2013-03-26T10:47:42+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -18,7 +18,7 @@
     <link href="http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/"/>
     <updated>2013-03-26T10:14:00+13:00</updated>
     <id>http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss</id>
-    <content type="html"><![CDATA[<p><a href="http://useyourloaf.com/blog/2012/08/24/using-appearance-proxy-to-style-apps.html">UIAppearance</a> is a convenient way to define styles for UIKit classes throughout your application. For example, instead of setting the font on every UILabel throughout your application, you can define it once as a UIAppearance proxy:</p>
+    <content type="html"><![CDATA[<p><a href="http://useyourloaf.com/blog/2012/08/24/using-appearance-proxy-to-style-apps.html">UIAppearance</a> is a convenient way to define styles for UIKit classes throughout your application. For example, instead of setting the font on every UILabel, you can define it once using a UIAppearance proxy:</p>
 
 <p><code>objective-c
 [[UILabel appearance] setFont:[UIFont fontWithName:@"Avenir-Medium" size:11]];
@@ -67,7 +67,7 @@
 
 <p>UISS includes logging and a console for troubleshooting style problems. It can even generate the equivalent UIAppearance code from the JSON files, which is handy if you want to see exactly what's going on.</p>
 
-<p>Styles can even be loaded from a remote server to enable live style updates.</p>
+<p>Styles can even be loaded from a remote server to enable live style updates in your app.</p>
 
 <p>I was able to get up and running with UISS quickly and found it greatly improved the readability of my UIAppearance definitions. UISS is available on <a href="http://github.com/robertwijas/UISS">GitHub</a> or as a <a href="http://cocoapods.org/?q=uiss">Cocoapod</a>.</p>
 ]]></content>
