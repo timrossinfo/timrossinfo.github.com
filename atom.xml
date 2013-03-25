@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-21T15:11:07+13:00</updated>
+  <updated>2013-03-26T10:37:06+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -12,6 +12,84 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Making UIAppearance Code Readable with UISS]]></title>
+    <link href="http://timrossinfo.github.com/blog/2013/03/26/making-uiappearance-code-readable-with-uiss/"/>
+    <updated>2013-03-26T10:14:00+13:00</updated>
+    <id>http://timrossinfo.github.com/blog/2013/03/26/making-uiappearance-code-readable-with-uiss</id>
+    <content type="html"><![CDATA[<p><a href="http://useyourloaf.com/blog/2012/08/24/using-appearance-proxy-to-style-apps.html">UIAppearance</a> is a convenient way to define styles for UIKit classes throughout your application. For example, instead of setting the font on every UILabel throughout your application, you can define it once as a UIAppearance proxy:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[[</span><span class="n">UILabel</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setFont:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nl">fontWithName:</span><span class="s">@&quot;Avenir-Medium&quot;</span> <span class="nl">size:</span><span class="mi">11</span><span class="p">]];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Of course this is Objective-C, so the UIAppearance code is verbose and can be quite difficult to read. If you work with a designer who might like to tweak these values, the code can appear daunting. Luckily there&#8217;s a quick and simple way to make UIAppearance code easier to read (and write!).</p>
+
+<h2>Introducing UISS</h2>
+
+<p><a href="http://github.com/robertwijas/UISS">UISS</a> stands for UIKit Style Sheets. UISS is an iOS library build on top of UIAppearance proxies and provides a convenient way to define styles using JSON.</p>
+
+<p>Let&#8217;s look at a more complex example of styles defined in Objective-C using UIAppearance:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[[</span><span class="n">UIButton</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setTitleColor:</span><span class="p">[</span><span class="n">UIColor</span> <span class="nl">colorWithRed:</span><span class="mf">204.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">green:</span><span class="mf">204.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">blue:</span><span class="mf">204.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">alpha:</span><span class="mi">1</span><span class="p">]</span> <span class="nl">forState:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UIButton</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setTitleColor:</span><span class="p">[</span><span class="n">UIColor</span> <span class="nl">colorWithRed:</span><span class="mf">160.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">green:</span><span class="mf">160.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">blue:</span><span class="mf">160.f</span><span class="o">/</span><span class="mf">255.f</span> <span class="nl">alpha:</span><span class="mi">1</span><span class="p">]</span> <span class="nl">forState:</span><span class="n">UIControlStateHighlighted</span><span class="p">];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UIButton</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setTitleShadowColor:</span><span class="p">[</span><span class="n">UIColor</span> <span class="nl">colorWithWhite:</span><span class="mi">0</span> <span class="nl">alpha:</span><span class="mf">0.7</span><span class="p">]</span> <span class="nl">forState:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UIButton</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setBackgroundImage:</span><span class="p">[[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;ButtonGrey&quot;</span><span class="p">]</span> <span class="nl">resizableImageWithCapInsets:</span><span class="n">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> <span class="nl">forState:</span><span class="n">UIControlStateNormal</span><span class="p">];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UIButton</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setBackgroundImage:</span><span class="p">[[</span><span class="n">UIImage</span> <span class="nl">imageNamed:</span><span class="s">@&quot;ButtonGreyTap&quot;</span><span class="p">]</span> <span class="nl">resizableImageWithCapInsets:</span><span class="n">UIEdgeInsetsMake</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> <span class="nl">forState:</span><span class="n">UIControlStateHighlighted</span><span class="p">];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UILabel</span> <span class="nl">appearanceWhenContainedIn:</span><span class="p">[</span><span class="n">UIButton</span> <span class="n">class</span><span class="p">],</span> <span class="nb">nil</span><span class="p">]</span> <span class="nl">setFont:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nl">fontWithName:</span><span class="s">@&quot;Avenir-Medium&quot;</span> <span class="nl">size:</span><span class="mi">11</span><span class="p">]];</span>
+</span><span class='line'><span class="p">[[</span><span class="n">UILabel</span> <span class="nl">appearanceWhenContainedIn:</span><span class="p">[</span><span class="n">UIButton</span> <span class="n">class</span><span class="p">],</span> <span class="nb">nil</span><span class="p">]</span> <span class="nl">setShadowOffset:</span><span class="n">CGSizeMake</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now here&#8217;s the equivalent styles defined in JSON using UISS:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span>
+</span><span class='line'>  <span class="s2">&quot;UIButton&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>      <span class="s2">&quot;titleColor:normal&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">204</span><span class="p">,</span> <span class="mi">204</span><span class="p">,</span> <span class="mi">204</span><span class="p">],</span>
+</span><span class='line'>      <span class="s2">&quot;titleColor:highlighted&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">160</span><span class="p">],</span>
+</span><span class='line'>      <span class="s2">&quot;titleShadowColor:normal&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">],</span>
+</span><span class='line'>      <span class="s2">&quot;backgroundImage:normal&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;ButtonGrey&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+</span><span class='line'>      <span class="s2">&quot;backgroundImage:highlighted&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;ButtonGreyTap&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span>
+</span><span class='line'>      <span class="s2">&quot;UILabel&quot;</span><span class="o">:</span> <span class="p">{</span>
+</span><span class='line'>          <span class="s2">&quot;font&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Avenir-Medium&quot;</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+</span><span class='line'>          <span class="s2">&quot;shadowOffset&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</span><span class='line'>      <span class="p">}</span>
+</span><span class='line'>  <span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>The UISS code is not only easier to read, but also more pleasurable to write!</p>
+
+<p>UISS includes logging and a console for troubleshooting style problems. It can even generate the equivalent UIAppearance code from the JSON files, which is handy if you want to see exactly what&#8217;s going on.</p>
+
+<p>Styles can even be loaded from a remote server to enable live style updates.</p>
+
+<p>I was able to get up and running with UISS quickly and found it greatly improved the readability of my UIAppearance definitions. UISS is available on <a href="http://github.com/robertwijas/UISS">GitHub</a> or as a <a href="http://cocoapods.org/?q=uiss">Cocoapod</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[To Segue or Not to Segue]]></title>
