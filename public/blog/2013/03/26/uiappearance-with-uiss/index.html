@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tim Ross</title>
+  <title>Improving Readability of UIAppearance Code with UISS - Tim Ross</title>
   <meta name="author" content="Tim Ross">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://timrossinfo.github.com/">
+  <link rel="canonical" href="http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -65,15 +65,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2013/03/26/uiappearance-with-uiss/">Improving Readability of UIAppearance Code With UISS</a></h1>
+      <h1 class="entry-title">Improving Readability of UIAppearance Code With UISS</h1>
     
     
       <p class="meta">
@@ -96,7 +93,7 @@
   </header>
 
 
-  <div class="entry-content"><p><a href="http://useyourloaf.com/blog/2012/08/24/using-appearance-proxy-to-style-apps.html">UIAppearance</a> is a convenient way to define styles for UIKit classes throughout your application. For example, instead of setting the font on every UILabel, you can define it once using a UIAppearance proxy:</p>
+<div class="entry-content"><p><a href="http://useyourloaf.com/blog/2012/08/24/using-appearance-proxy-to-style-apps.html">UIAppearance</a> is a convenient way to define styles for UIKit classes throughout your application. For example, instead of setting the font on every UILabel, you can define it once using a UIAppearance proxy:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[[</span><span class="n">UILabel</span> <span class="n">appearance</span><span class="p">]</span> <span class="nl">setFont:</span><span class="p">[</span><span class="n">UIFont</span> <span class="nl">fontWithName:</span><span class="s">@&quot;Avenir-Medium&quot;</span> <span class="nl">size:</span><span class="mi">11</span><span class="p">]];</span>
@@ -167,22 +164,16 @@
 
 <p>I was able to get up and running with UISS quickly and found it greatly improved the readability of my UIAppearance definitions. UISS is available on <a href="http://github.com/robertwijas/UISS">GitHub</a> or as a <a href="http://cocoapods.org/?q=uiss">Cocoapod</a>.</p>
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/03/19/to-segue-or-not-to-segue/">To Segue or Not to Segue</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tim Ross</span></span>
+
+      
 
 
 
@@ -194,143 +185,49 @@
   
 
 
-<time datetime="2013-03-19T10:38:00+13:00" pubdate data-updated="true">Mar 19<span>th</span>, 2013</time>
-        
-      </p>
+<time datetime="2013-03-26T10:14:00+13:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ios/'>iOS</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>iOS 5 introduced <a href="http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1">Storyboards</a>, which allow you to visually define the flow of an app. The transitions between view controllers in a Storyboard are called &#8220;Segues&#8221;.</p>
-
-<p>Initially, the benefits of using segues seem clear:</p>
-
-<ul>
-<li>Spend less time writing boring transition code.</li>
-<li>Code is cleaner and not littered with transitions.</li>
-<li>You get a visual representation of how the app fits together.</li>
-</ul>
-
-
-<p>However, after using segues for a while I&#8217;ve found there are a few downsides:</p>
-
-<ul>
-<li>The visual layout is restricted. Segues always exit from right of a controller and enter from  the left. For any moderately complex app, you can end up with a storyboard that resembles spaghetti.</li>
-<li>I almost always need to pass data to the controller I&#8217;m transitioning to. This requires dropping back to the code to intercept the segue, find the controller, then set its properties.</li>
-<li>I often find I end up writing quite lengthy and obscure code to intercept the segue.</li>
-</ul>
-
-
-<p>Here&#8217;s a comparison of transitioning using segues versus a traditional approach. In this code I&#8217;m handling tapping a detail accessory on a row in a table view, then transitioning to a view controller.</p>
-
-<p>First, I&#8217;ll use a segue:</p>
-
-<p><img src="/images/segue1.png" width="789"></p>
-
-<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I&#8217;m done! Not quite&#8230; I also need to assign some data on the controller I&#8217;m transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">prepareForSegue:</span><span class="p">(</span><span class="n">UIStoryboardSegue</span> <span class="o">*</span><span class="p">)</span><span class="nv">segue</span> <span class="nf">sender:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">([</span><span class="n">segue</span><span class="p">.</span><span class="n">identifier</span> <span class="nl">isEqualToString:</span><span class="s">@&quot;ContactDetailSegue&quot;</span><span class="p">])</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">ContactDetailViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="n">segue</span><span class="p">.</span><span class="n">destinationViewController</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I&#8217;ll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">accessoryButtonTappedForRowWithIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">self</span><span class="p">.</span><span class="n">selectedDetailIndexPath</span> <span class="o">=</span> <span class="n">indexPath</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Now I can use this to assign data to the controller I am transitioning to:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">prepareForSegue:</span><span class="p">(</span><span class="n">UIStoryboardSegue</span> <span class="o">*</span><span class="p">)</span><span class="nv">segue</span> <span class="nf">sender:</span><span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nv">sender</span> <span class="p">{</span>
-</span><span class='line'>    <span class="k">if</span> <span class="p">([</span><span class="n">segue</span><span class="p">.</span><span class="n">identifier</span> <span class="nl">isEqualToString:</span><span class="s">@&quot;ContactDetailSegue&quot;</span><span class="p">])</span> <span class="p">{</span>
-</span><span class='line'>        <span class="n">ContactDetailViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="n">segue</span><span class="p">.</span><span class="n">destinationViewController</span><span class="p">;</span>
-</span><span class='line'>        <span class="n">Contact</span> <span class="o">*</span><span class="n">contact</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">contacts</span> <span class="nl">objectAtIndex:</span><span class="n">self</span><span class="p">.</span><span class="n">selectedDetailIndexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
-</span><span class='line'>        <span class="n">controller</span><span class="p">.</span><span class="n">contact</span> <span class="o">=</span> <span class="n">contact</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">}</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>But hang on! The <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method gets called <em>after</em> <code>prepareForSegue</code>, which means my <code>selectedDetailIndexPath</code> variable is not yet set. So now I need to disconnect the automatic segue from the detail accessory and instead create a <em>manual</em> segue between the two controllers.</p>
-
-<p><img src="/images/segue2.png" width="789"></p>
-
-<p>Next, I need to call <code>performSegueWithIdentifier</code> to manually trigger the segue in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">accessoryButtonTappedForRowWithIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">self</span><span class="p">.</span><span class="n">selectedDetailIndexPath</span> <span class="o">=</span> <span class="n">indexPath</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">self</span> <span class="nl">performSegueWithIdentifier:</span><span class="s">@&quot;ContactDetailSegue&quot;</span> <span class="nl">sender:</span><span class="n">self</span><span class="p">];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Phew, that ended up being quite complicated.</p>
-
-<p>Now, let&#8217;s look at the &#8220;traditional&#8221; way of coding a transition without segues using <code>pushViewController</code>:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">tableView:</span><span class="p">(</span><span class="n">UITableView</span> <span class="o">*</span><span class="p">)</span><span class="nv">tableView</span> <span class="nf">accessoryButtonTappedForRowWithIndexPath:</span><span class="p">(</span><span class="n">NSIndexPath</span> <span class="o">*</span><span class="p">)</span><span class="nv">indexPath</span> <span class="p">{</span>
-</span><span class='line'>    <span class="n">ContactDetailViewController</span> <span class="o">*</span><span class="n">controller</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">storyboard</span> <span class="nl">instantiateViewControllerWithIdentifier:</span><span class="s">@&quot;ContactDetailViewController&quot;</span><span class="p">];</span>
-</span><span class='line'>    <span class="n">Contact</span> <span class="o">*</span><span class="n">contact</span> <span class="o">=</span> <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">contacts</span> <span class="nl">objectAtIndex:</span><span class="n">indexPath</span><span class="p">.</span><span class="n">row</span><span class="p">];</span>
-</span><span class='line'>    <span class="n">controller</span><span class="p">.</span><span class="n">contact</span> <span class="o">=</span> <span class="n">contact</span><span class="p">;</span>
-</span><span class='line'>    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">navigationController</span> <span class="nl">pushViewController:</span><span class="n">controller</span> <span class="nl">animated:</span><span class="n">YES</span><span class="p">];</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That replaces all the previous code! Feels much simpler, doesn&#8217;t it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there&#8217;s no &#8220;visual&#8221; representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.</p>
-
-<p>So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it&#8217;s cleaner and simpler to do a manual transition rather than use a segue.</p>
-
-<p>Segues are a step in the right direction, the less code we have to write the better! Hopefully they&#8217;ll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/" data-via="timrossinfo" data-counturl="http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/19/to-segue-or-not-to-segue/" title="Previous Post: To Segue or Not to Segue">&laquo; To Segue or Not to Segue</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
+  </section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
   <h1>Who am I?</h1>
-  <p>I&#8217;m a software developer and co-founder of <a href="http://elucidcode.com">elucidcode</a>, an app development company based in <a href="http://www.aucklandnz.com">Auckland</a>, New Zealand.</p>
+  <p>I'm a software developer and co-founder of <a href="http://elucidcode.com">elucidcode</a>, an app development company based in <a href="http://www.aucklandnz.com">Auckland</a>, New Zealand.</p>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -350,7 +247,7 @@
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -367,6 +264,7 @@
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -381,7 +279,10 @@
       var disqus_shortname = 'timrossinfo';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/';
+        var disqus_url = 'http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
