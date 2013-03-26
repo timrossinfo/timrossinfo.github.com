@@ -4,7 +4,7 @@
   <title><![CDATA[Category: iOS | Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-26T10:47:42+13:00</updated>
+  <updated>2013-03-27T07:35:16+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -12,6 +12,114 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[More Fun With UIAppearance]]></title>
+    <link href="http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance/"/>
+    <updated>2013-03-26T20:14:00+13:00</updated>
+    <id>http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance</id>
+    <content type="html"><![CDATA[<p>In <a href="/uiappearance-with-uiss">my last post</a> I discussed using UIAppearance with <a href="http://github.com/robertwijas/UISS">UISS</a> to style iOS apps. Today I discovered a few more tricks with UIAppearance.</p>
+
+<p>UIKit only exposes a limited set of elements that can be styled with UIAppearance. But what if we want to style something that's not exposed? Well, it turns out you can define your own UIAppearance proxies by appending a setter method declaration with <code>UI_APPEARANCE_SELECTOR</code>.</p>
+
+<p>Say, for example, I want to use UIAppearance to set rounded corners on a UIView. I can create a <code>setCornerRadius</code> method on a UIView subclass that's appended with <code>UI_APPEARANCE_SELECTOR</code>:</p>
+
+<p>``` objective-c
+@interface MyView : UIView</p>
+
+<ul>
+<li>(void)setCornerRadius:(CGFloat)cornerRadius UI_APPEARANCE_SELECTOR;</li>
+</ul>
+
+
+<p>@end
+```</p>
+
+<p>UIView itself doesn't have a <code>corderRadius</code> property, so the implementation needs to set the value on the underlying CALayer:</p>
+
+<p>``` objective-c
+@implementation MyView</p>
+
+<ul>
+<li>(void)setCornerRadius:(CGFloat)cornerRadius {
+  self.layer.cornerRadius = cornerRadius;
+}</li>
+</ul>
+
+
+<p>@end
+```</p>
+
+<p>Now I can set the new <code>corderRadius</code> style on all instances of <code>MyView</code> with UIAppearance:</p>
+
+<p><code>objective-c
+[[MyView appearance] setCornerRadius:3];
+</code></p>
+
+<p>Or, with <a href="http://github.com/robertwijas/UISS">UISS</a> I can use JSON to set the style:</p>
+
+<p>``` javascript
+{</p>
+
+<pre><code>"MyView": {
+    "cornerRadius": 3
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Now, this is pretty neat, but what if I want to expose <code>cornerRadius</code> on every UIView in the application, not just the subclass? Well, it turns out you can create a category on UIView that defines custom UIAppearance methods:</p>
+
+<p>``` objective-c
+@interface UIView (Appearance)</p>
+
+<ul>
+<li>(void)setCornerRadius:(CGFloat)cornerRadius UI_APPEARANCE_SELECTOR;</li>
+<li>(void)setBorderColor:(UIColor *)borderColor UI_APPEARANCE_SELECTOR;</li>
+<li>(void)setBorderWidth:(CGFloat)borderWidth UI_APPEARANCE_SELECTOR;</li>
+</ul>
+
+
+<p>@end</p>
+
+<p>@implementation UIView (Appearance)</p>
+
+<ul>
+<li><p>(void)setCornerRadius:(CGFloat)cornerRadius {
+  self.layer.cornerRadius = cornerRadius;
+}</p></li>
+<li><p>(void)setBorderColor:(UIColor *)borderColor {
+  self.layer.borderColor = borderColor.CGColor;
+}</p></li>
+<li><p>(void)setBorderWidth:(CGFloat)borderWidth {
+  self.layer.borderWidth = borderWidth;
+}</p></li>
+</ul>
+
+
+<p>@end</p>
+
+<p>```</p>
+
+<p>So now every UIView in the application can have the <code>cornerRadius</code>, <code>borderColor</code> and <code>borderWidth</code> elements styled:</p>
+
+<p>``` javascript
+{</p>
+
+<pre><code>"UIView": {
+    "cornerRadius": 3,
+    "borderColor": [26, 26, 26],
+    "borderWidth": 1
+}
+</code></pre>
+
+<p>}
+```</p>
+
+<p>Custom UIAppearance methods enable more elements to be exposed for styling. <a href="http://github.com/robertwijas/UISS">UISS</a> makes this code more readable by allowing styles to be defined using JSON.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Improving Readability of UIAppearance Code with UISS]]></title>
@@ -28,7 +136,7 @@
 
 <h2>Introducing UISS</h2>
 
-<p><a href="http://github.com/robertwijas/UISS">UISS</a> stands for UIKit Style Sheets. UISS is an iOS library build on top of UIAppearance proxies and provides a convenient way to define styles using JSON.</p>
+<p><a href="http://github.com/robertwijas/UISS">UISS</a>, developed by <a href="http://robertwijas.com">Robert Wijas</a>, is an iOS library build on top of UIAppearance that provides a convenient way to define styles using JSON.</p>
 
 <p>Let's look at a more complex example of styles defined in Objective-C using UIAppearance:</p>
 

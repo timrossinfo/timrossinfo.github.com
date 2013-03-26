@@ -15,7 +15,7 @@ Of course this is Objective-C, so the UIAppearance code is verbose and can be qu
 
 ## Introducing UISS
 
-[UISS](http://github.com/robertwijas/UISS) stands for UIKit Style Sheets. UISS is an iOS library build on top of UIAppearance proxies and provides a convenient way to define styles using JSON.
+[UISS](http://github.com/robertwijas/UISS), developed by [Robert Wijas](http://robertwijas.com), is an iOS library build on top of UIAppearance that provides a convenient way to define styles using JSON.
 
 Let's look at a more complex example of styles defined in Objective-C using UIAppearance:
 
