@@ -5,7 +5,7 @@ date: 2013-03-26 20:14
 comments: true
 categories: iOS
 ---
-In [my last post](/uiappearance-with-uiss) I discussed using UIAppearance with [UISS](http://github.com/robertwijas/UISS) to style iOS apps. Today I discovered a few more tricks with UIAppearance.
+In [my last post](/blog/2013/03/26/uiappearance-with-uiss) I discussed using UIAppearance with [UISS](http://github.com/robertwijas/UISS) to style iOS apps. Today I discovered a few more tricks with UIAppearance.
 
 UIKit only exposes a limited set of elements that can be styled with UIAppearance. But what if we want to style something that's not exposed? Well, it turns out you can define your own UIAppearance proxies by appending a setter method declaration with <code>UI_APPEARANCE_SELECTOR</code>.
 

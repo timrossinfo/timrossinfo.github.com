@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-27T07:35:16+13:00</updated>
+  <updated>2013-03-27T07:42:02+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -18,7 +18,7 @@
     <link href="http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance/"/>
     <updated>2013-03-26T20:14:00+13:00</updated>
     <id>http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance</id>
-    <content type="html"><![CDATA[<p>In <a href="http://timrossinfo.github.com/uiappearance-with-uiss">my last post</a> I discussed using UIAppearance with <a href="http://github.com/robertwijas/UISS">UISS</a> to style iOS apps. Today I discovered a few more tricks with UIAppearance.</p>
+    <content type="html"><![CDATA[<p>In <a href="http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss">my last post</a> I discussed using UIAppearance with <a href="http://github.com/robertwijas/UISS">UISS</a> to style iOS apps. Today I discovered a few more tricks with UIAppearance.</p>
 
 <p>UIKit only exposes a limited set of elements that can be styled with UIAppearance. But what if we want to style something that&#8217;s not exposed? Well, it turns out you can define your own UIAppearance proxies by appending a setter method declaration with <code>UI_APPEARANCE_SELECTOR</code>.</p>
 
