@@ -4,7 +4,7 @@
   <title><![CDATA[Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2013-03-26T10:47:42+13:00</updated>
+  <updated>2013-03-26T19:54:39+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -29,7 +29,7 @@
 
 <h2>Introducing UISS</h2>
 
-<p><a href="http://github.com/robertwijas/UISS">UISS</a> stands for UIKit Style Sheets. UISS is an iOS library build on top of UIAppearance proxies and provides a convenient way to define styles using JSON.</p>
+<p><a href="http://github.com/robertwijas/UISS">UISS</a>, developed by <a href="http://robertwijas.com">Robert Wijas</a>, is an iOS library build on top of UIAppearance that provides a convenient way to define styles using JSON.</p>
 
 <p>Let&#8217;s look at a more complex example of styles defined in Objective-C using UIAppearance:</p>
 
