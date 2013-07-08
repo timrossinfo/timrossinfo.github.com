@@ -9,7 +9,7 @@
   <meta name="author" content="Tim Ross">
 
   
-  <meta name="description" content="In my last post I discussed using UIAppearance with UISS to style iOS apps. Today I discovered a few more tricks with UIAppearance. UIKit only &hellip;">
+  <meta name="description" content="A conversation on twitter last week got me thinking about how I name my classes, particularly the difference between a Manager and a Controller class &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -67,6 +67,71 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/07/03/managers-vs-controllers/">Managers vs Controllers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-03T15:10:00+12:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>A conversation on twitter last week got me thinking about how I name my classes, particularly the difference between a Manager and a Controller class.</p>
+
+<p>For me, a Manager is the go-to-guy for a particular aspect of functionality or data. For example, a <code>FileManager</code> handles anything related to accessing the file system. A Manager class contains only class methods, or is implemented as a Singleton, as no separate instances are usually required.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[[</span><span class="n">MyFileManager</span> <span class="n">sharedManager</span><span class="p">]</span> <span class="nl">fileExistsAtPath:</span><span class="n">myPath</span><span class="p">];</span> <span class="c1">// Singleton</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[</span><span class="n">MyFileManager</span> <span class="nl">fileExistsAtPath:</span><span class="n">myPath</span><span class="p">];</span> <span class="c1">// Class method</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A Controller object co-ordinates a process. For example, a <code>PurchaseController</code> controls the series of actions in purchasing a product. A <code>ViewController</code> co-ordinates a series of actions for interacting with a View.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">MyPurchaseController</span> <span class="o">*</span><span class="n">purchaseController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyPurchaseController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="n">purchaseController</span> <span class="nl">purchaseProduct:</span><span class="n">productId</span><span class="p">];</span> <span class="c1">// Begins purchase process</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">[</span><span class="n">purchaseController</span> <span class="n">cancelPurchase</span><span class="p">];</span> <span class="c1">// Cancels process</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Everyone has their own naming preferences, and yours might be different. It&#8217;s not really the names themselves that&#8217;s important, but that the naming is consistent throughout the application. Remember, it&#8217;s all about communicating intent to yourself and others who use your code.</p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -501,6 +566,10 @@
 <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/03/managers-vs-controllers/">Managers vs Controllers</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2013/03/26/more-fun-with-uiappearance/">More Fun With UIAppearance</a>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: iOS, | Tim Ross]]></title>
-  <link href="http://timrossinfo.github.com/blog/categories/ios/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Patterns | Tim Ross]]></title>
+  <link href="http://timrossinfo.github.com/blog/categories/patterns/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
   <updated>2013-07-08T22:27:14+12:00</updated>
   <id>http://timrossinfo.github.com/</id>
