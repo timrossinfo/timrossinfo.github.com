@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Managers vs Controllers - Tim Ross</title>
+  <meta name="author" content="Tim Ross">
+
+  
+  <meta name="description" content="A conversation on twitter last week got me thinking about how I name my classes, particularly the difference between a Manager and a Controller class &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Tim Ross" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Tim Ross</a></h1>
+  
+    <h2>Software Developer - iOS, Ruby/Rails, .NET</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:timrossinfo.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/about-me">About Me</a></li>
+  <li><a href="/projects">Projects</a></li>
+  <li><a href="/contact">Contact</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Managers vs Controllers</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-03T15:10:00+12:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>A conversation on twitter last week got me thinking about how I name my classes, particularly the difference between a Manager and a Controller class.</p>
+
+<p>For me, a Manager is the go-to-guy for a particular aspect of functionality or data. For example, a <code>FileManager</code> handles anything related to accessing the file system. A Manager class contains only class methods, or is implemented as a Singleton, as no separate instances are usually required.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[[</span><span class="n">MyFileManager</span> <span class="n">sharedManager</span><span class="p">]</span> <span class="nl">fileExistsAtPath:</span><span class="n">myPath</span><span class="p">];</span> <span class="c1">// Singleton</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>or</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="p">[</span><span class="n">MyFileManager</span> <span class="nl">fileExistsAtPath:</span><span class="n">myPath</span><span class="p">];</span> <span class="c1">// Class method</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A Controller object co-ordinates a process. For example, a <code>PurchaseController</code> controls the series of actions in purchasing a product. A <code>ViewController</code> co-ordinates a series of actions for interacting with a View.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='objective-c'><span class='line'><span class="n">MyPurchaseController</span> <span class="o">*</span><span class="n">purchaseController</span> <span class="o">=</span> <span class="p">[[</span><span class="n">MyPurchaseController</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithDelegate:</span><span class="n">self</span><span class="p">];</span>
+</span><span class='line'><span class="p">[</span><span class="n">purchaseController</span> <span class="nl">purchaseProduct:</span><span class="n">productId</span><span class="p">];</span> <span class="c1">// Begins purchase process</span>
+</span><span class='line'><span class="p">...</span>
+</span><span class='line'><span class="p">[</span><span class="n">purchaseController</span> <span class="n">cancelPurchase</span><span class="p">];</span> <span class="c1">// Cancels process</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Everyone has their own naming preferences, and yours might be different. It&#8217;s not really the names themselves that&#8217;s important, but that the naming is consistent throughout the application. Remember, it&#8217;s all about communicating intent to yourself and others who use your code.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Tim Ross</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-07-03T15:10:00+12:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2013</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/design/'>Design</a>, <a class='category' href='/blog/categories/patterns/'>Patterns</a>, <a class='category' href='/blog/categories/ios/'>iOS,</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/" data-via="timrossinfo" data-counturl="http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/03/26/more-fun-with-uiappearance/" title="Previous Post: More Fun With UIAppearance">&laquo; More Fun With UIAppearance</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Who am I?</h1>
+  <p>I'm a software developer and co-founder of <a href="http://elucidcode.com">elucidcode</a>, an app development company based in <a href="http://www.aucklandnz.com">Auckland</a>, New Zealand.</p>
+</section>
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/07/03/managers-vs-controllers/">Managers vs Controllers</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/26/more-fun-with-uiappearance/">More Fun With UIAppearance</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/26/uiappearance-with-uiss/">Improving Readability of UIAppearance Code with UISS</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/03/19/to-segue-or-not-to-segue/">To Segue or Not to Segue</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("timrossinfo", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/timrossinfo" class="twitter-follow-button" data-show-count="false">Follow @timrossinfo</a>
+  
+</section>
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Tim Ross -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a>. Design by <a href="http://octopressthemes.com">Octopress Themes</a>.</span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'timrossinfo';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/';
+        var disqus_url = 'http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
