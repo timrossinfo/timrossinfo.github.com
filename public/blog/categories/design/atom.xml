@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Design | Tim Ross]]></title>
+  <title><![CDATA[Category: design | Tim Ross]]></title>
   <link href="http://timrossinfo.github.com/blog/categories/design/atom.xml" rel="self"/>
   <link href="http://timrossinfo.github.com/"/>
-  <updated>2017-01-05T17:50:52+13:00</updated>
+  <updated>2017-01-05T17:58:59+13:00</updated>
   <id>http://timrossinfo.github.com/</id>
   <author>
     <name><![CDATA[Tim Ross]]></name>
@@ -22,24 +22,23 @@
 
 <p>For me, a Manager is the go-to-guy for a particular aspect of functionality or data. For example, a <code>FileManager</code> handles anything related to accessing the file system. A Manager class contains only class methods, or is implemented as a <a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton</a>, as no separate instances are usually required.</p>
 
-<p><code>objective-c
-[MyFileManager fileExistsAtPath:myPath]; // Class method
-</code>
-or
+<pre><code class="objective-c">[MyFileManager fileExistsAtPath:myPath]; // Class method
+</code></pre>
+
+<p>or
 <code>objective-c
 [[MyFileManager sharedManager] fileExistsAtPath:myPath]; // Singleton
 </code></p>
 
 <p>A Controller class co-ordinates a process. For example, a <code>PurchaseController</code> controls the series of actions in purchasing a product. A <code>ViewController</code> co-ordinates a series of actions for interacting with a View.</p>
 
-<p><code>objective-c
-MyPurchaseController *purchaseController = [[MyPurchaseController alloc] initWithDelegate:self];
+<pre><code class="objective-c">MyPurchaseController *purchaseController = [[MyPurchaseController alloc] initWithDelegate:self];
 [purchaseController purchaseProduct:productId]; // Begins purchase process
 ...
 [purchaseController cancelPurchase]; // Cancels process
-</code></p>
+</code></pre>
 
-<p>Everyone has their own naming preferences, and yours might be different. It's not really the names themselves that's important, but that the naming is consistent throughout the application. Remember, it's all about communicating intent to yourself and others who use your code.</p>
+<p>Everyone has their own naming preferences, and yours might be different. It&rsquo;s not really the names themselves that&rsquo;s important, but that the naming is consistent throughout the application. Remember, it&rsquo;s all about communicating intent to yourself and others who use your code.</p>
 ]]></content>
   </entry>
   

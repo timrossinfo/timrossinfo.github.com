@@ -21,10 +21,11 @@
   <link rel="canonical" href="http://timrossinfo.github.com/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="/javascripts/ender.js"></script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <link href="/atom.xml" rel="alternate" title="Tim Ross" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
@@ -49,7 +50,7 @@
   
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
-    <input type="hidden" name="q" value="site:timrossinfo.github.com" />
+    <input type="hidden" name="sitesearch" value="timrossinfo.github.com">
     <input class="search" type="text" name="q" results="0" placeholder="Search"/>
   </fieldset>
 </form>
@@ -82,14 +83,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-07-03T15:10:00+12:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2013</time>
+<time class='entry-date' datetime='2013-07-03T15:10:00+12:00'><span class='date'><span class='date-month'>Jul</span> <span class='date-day'>3</span><span class='date-suffix'>rd</span>, <span class='date-year'>2013</span></span> <span class='time'>3:10 pm</span></time>
         
       </p>
     
@@ -125,7 +119,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Everyone has their own naming preferences, and yours might be different. It&#8217;s not really the names themselves that&#8217;s important, but that the naming is consistent throughout the application. Remember, it&#8217;s all about communicating intent to yourself and others who use your code.</p>
+<p>Everyone has their own naming preferences, and yours might be different. It&rsquo;s not really the names themselves that&rsquo;s important, but that the naming is consistent throughout the application. Remember, it&rsquo;s all about communicating intent to yourself and others who use your code.</p>
 </div>
   
   
@@ -147,14 +141,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-03-26T20:14:00+13:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-03-26T20:14:00+13:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>8:14 pm</span></time>
         
       </p>
     
@@ -163,9 +150,9 @@
 
   <div class="entry-content"><p>In <a href="/blog/2013/03/26/uiappearance-with-uiss">my last post</a> I discussed using UIAppearance with <a href="http://github.com/robertwijas/UISS">UISS</a> to style iOS apps. Today I discovered a few more tricks with UIAppearance.</p>
 
-<p>UIKit only exposes a limited set of elements that can be styled with UIAppearance. But what if we want to style something that&#8217;s not exposed? Well, it turns out you can define your own UIAppearance proxies by appending a setter method declaration with <code>UI_APPEARANCE_SELECTOR</code>.</p>
+<p>UIKit only exposes a limited set of elements that can be styled with UIAppearance. But what if we want to style something that&rsquo;s not exposed? Well, it turns out you can define your own UIAppearance proxies by appending a setter method declaration with <code>UI_APPEARANCE_SELECTOR</code>.</p>
 
-<p>Say, for example, I want to use UIAppearance to set rounded corners on a UIView. I can create a <code>setCornerRadius</code> method on a UIView subclass that&#8217;s appended with <code>UI_APPEARANCE_SELECTOR</code>:</p>
+<p>Say, for example, I want to use UIAppearance to set rounded corners on a UIView. I can create a <code>setCornerRadius</code> method on a UIView subclass that&rsquo;s appended with <code>UI_APPEARANCE_SELECTOR</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -180,7 +167,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>UIView itself doesn&#8217;t have a <code>corderRadius</code> property, so the implementation needs to set the value on the underlying CALayer:</p>
+<p>UIView itself doesn&rsquo;t have a <code>corderRadius</code> property, so the implementation needs to set the value on the underlying CALayer:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -313,14 +300,7 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-03-26T10:14:00+13:00" pubdate data-updated="true">Mar 26<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-03-26T10:14:00+13:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>26</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:14 am</span></time>
         
       </p>
     
@@ -334,13 +314,13 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Of course this is Objective-C, so the UIAppearance code is verbose and can be quite difficult to read. If you work with a designer who might like to tweak these values, the code can appear daunting. Luckily there&#8217;s a quick and simple way to make UIAppearance code easier to read (and write!).</p>
+<p>Of course this is Objective-C, so the UIAppearance code is verbose and can be quite difficult to read. If you work with a designer who might like to tweak these values, the code can appear daunting. Luckily there&rsquo;s a quick and simple way to make UIAppearance code easier to read (and write!).</p>
 
 <h2>Introducing UISS</h2>
 
 <p><a href="http://github.com/robertwijas/UISS">UISS</a>, developed by <a href="http://robertwijas.com">Robert Wijas</a>, is an iOS library build on top of UIAppearance that provides a convenient way to define styles using JSON.</p>
 
-<p>Let&#8217;s look at a more complex example of styles defined in Objective-C using UIAppearance:</p>
+<p>Let&rsquo;s look at a more complex example of styles defined in Objective-C using UIAppearance:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -359,7 +339,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Now here&#8217;s the equivalent styles defined in JSON using UISS:</p>
+<p>Now here&rsquo;s the equivalent styles defined in JSON using UISS:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -392,7 +372,7 @@
 
 <p>The UISS code is not only easier to read, but also more pleasurable to write!</p>
 
-<p>UISS includes logging and a console for troubleshooting style problems. It can even generate the equivalent UIAppearance code from the JSON files, which is handy if you want to see exactly what&#8217;s going on.</p>
+<p>UISS includes logging and a console for troubleshooting style problems. It can even generate the equivalent UIAppearance code from the JSON files, which is handy if you want to see exactly what&rsquo;s going on.</p>
 
 <p>Styles can even be loaded from a remote server to enable live style updates in your app.</p>
 
@@ -418,21 +398,14 @@
 
 
 
-
-
-
-
-  
-
-
-<time datetime="2013-03-19T10:38:00+13:00" pubdate data-updated="true">Mar 19<span>th</span>, 2013</time>
+<time class='entry-date' datetime='2013-03-19T10:38:00+13:00'><span class='date'><span class='date-month'>Mar</span> <span class='date-day'>19</span><span class='date-suffix'>th</span>, <span class='date-year'>2013</span></span> <span class='time'>10:38 am</span></time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>iOS 5 introduced <a href="http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1">Storyboards</a>, which allow you to visually define the flow of an app. The transitions between view controllers in a Storyboard are called &#8220;Segues&#8221;.</p>
+  <div class="entry-content"><p>iOS 5 introduced <a href="http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1">Storyboards</a>, which allow you to visually define the flow of an app. The transitions between view controllers in a Storyboard are called &ldquo;Segues&rdquo;.</p>
 
 <p>Initially, the benefits of using segues seem clear:</p>
 
@@ -443,22 +416,22 @@
 </ul>
 
 
-<p>However, after using segues for a while I&#8217;ve found there are a few downsides:</p>
+<p>However, after using segues for a while I&rsquo;ve found there are a few downsides:</p>
 
 <ul>
 <li>The visual layout is restricted. Segues always exit from right of a controller and enter from  the left. For any moderately complex app, you can end up with a storyboard that resembles spaghetti.</li>
-<li>I almost always need to pass data to the controller I&#8217;m transitioning to. This requires dropping back to the code to intercept the segue, find the controller, then set its properties.</li>
+<li>I almost always need to pass data to the controller I&rsquo;m transitioning to. This requires dropping back to the code to intercept the segue, find the controller, then set its properties.</li>
 <li>I often find I end up writing quite lengthy and obscure code to intercept the segue.</li>
 </ul>
 
 
-<p>Here&#8217;s a comparison of transitioning using segues versus a traditional approach. In this code I&#8217;m handling tapping a detail accessory on a row in a table view, then transitioning to a view controller.</p>
+<p>Here&rsquo;s a comparison of transitioning using segues versus a traditional approach. In this code I&rsquo;m handling tapping a detail accessory on a row in a table view, then transitioning to a view controller.</p>
 
-<p>First, I&#8217;ll use a segue:</p>
+<p>First, I&rsquo;ll use a segue:</p>
 
 <p><img src="/images/segue1.png" width="789"></p>
 
-<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I&#8217;m done! Not quite&#8230; I also need to assign some data on the controller I&#8217;m transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:</p>
+<p>In theory I should just be able to connect a segue from the detail accessory to the next view controller and I&rsquo;m done! Not quite&hellip; I also need to assign some data on the controller I&rsquo;m transitioning to. So I need to intercept the segue by implementing the <code>prepareForSegue</code> method, then check the segue identifier to ensure I am handling the correct segue:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -473,7 +446,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I&#8217;ll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
+<p>So I have the controller and now I need to assign some data to it. But how do I know which row was tapped? There is nothing in UITableView that stores the selected state for an accessory view. So I&rsquo;ll need an instance variable to store the row index and set this in the <code>tableView:accessoryButtonTappedForRowWithIndexPath:</code> method:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -522,7 +495,7 @@
 
 <p>Phew, that ended up being quite complicated.</p>
 
-<p>Now, let&#8217;s look at the &#8220;traditional&#8221; way of coding a transition without segues using <code>pushViewController</code>:</p>
+<p>Now, let&rsquo;s look at the &ldquo;traditional&rdquo; way of coding a transition without segues using <code>pushViewController</code>:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -539,11 +512,11 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>That replaces all the previous code! Feels much simpler, doesn&#8217;t it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there&#8217;s no &#8220;visual&#8221; representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.</p>
+<p>That replaces all the previous code! Feels much simpler, doesn&rsquo;t it? What I like about this is that the transition code is all in one place, not spread across two methods. Sure, there&rsquo;s no &ldquo;visual&rdquo; representation of the transition, but if the code is clean and clear, it should be easy to determine how one controller transitions to the next.</p>
 
-<p>So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it&#8217;s cleaner and simpler to do a manual transition rather than use a segue.</p>
+<p>So should you ditch using segues? Not necessarily. They can definitely save time if you are transitioning between static views. But there may be cases where it&rsquo;s cleaner and simpler to do a manual transition rather than use a segue.</p>
 
-<p>Segues are a step in the right direction, the less code we have to write the better! Hopefully they&#8217;ll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.</p>
+<p>Segues are a step in the right direction, the less code we have to write the better! Hopefully they&rsquo;ll continue to be improved in future updates of iOS. But with the current implementation, you often have to write quite obscure code to work-around the limitations.</p>
 </div>
   
   
@@ -561,7 +534,7 @@
   
     <section>
   <h1>Who am I?</h1>
-  <p>I&#8217;m a software developer and co-founder of <a href="http://elucidcode.com">elucidcode</a>, an app development company based in <a href="http://www.aucklandnz.com">Auckland</a>, New Zealand.</p>
+  <p>I'm a software developer and co-founder of <a href="http://elucidcode.com">elucidcode</a>, an app development company based in <a href="http://www.aucklandnz.com">Auckland</a>, New Zealand.</p>
 </section>
 <section>
   <h1>Recent Posts</h1>
@@ -576,7 +549,7 @@
       </li>
     
       <li class="post">
-        <a href="/blog/2013/03/26/uiappearance-with-uiss/">Improving Readability of UIAppearance Code with UISS</a>
+        <a href="/blog/2013/03/26/uiappearance-with-uiss/">Improving Readability of UIAppearance Code With UISS</a>
       </li>
     
       <li class="post">
@@ -589,7 +562,7 @@
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -624,7 +597,7 @@
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
       (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     }());
 </script>
@@ -640,7 +613,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
