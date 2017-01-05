@@ -1,39 +1,46 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
-    <url>
-        <loc>http://timrossinfo.github.com/blog/2013/03/19/to-segue-or-not-to-segue/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/about-me/</loc>
-        <lastmod>2017-01-05T17:50:52+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/blog/archives/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/contact/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
-    <url>
-        <loc>http://timrossinfo.github.com/projects/</loc>
-        <lastmod>2017-01-05T16:18:58+13:00</lastmod>
-    </url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://timrossinfo.github.com/blog/2013/07/03/managers-vs-controllers/</loc>
+<lastmod>2013-07-03T15:10:00+12:00</lastmod>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/2013/03/26/more-fun-with-uiappearance/</loc>
+<lastmod>2013-03-26T20:14:00+13:00</lastmod>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/2013/03/26/uiappearance-with-uiss/</loc>
+<lastmod>2013-03-26T10:14:00+13:00</lastmod>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/2013/03/19/to-segue-or-not-to-segue/</loc>
+<lastmod>2013-03-19T10:38:00+13:00</lastmod>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/archives/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/about-me/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/contact/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/projects/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/categories/ios/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/categories/ios/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/categories/design/</loc>
+</url>
+<url>
+<loc>http://timrossinfo.github.com/blog/categories/patterns/</loc>
+</url>
 </urlset>
