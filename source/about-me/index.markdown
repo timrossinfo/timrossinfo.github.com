@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "About Me"
-date: 2013-03-18 10:33
+date: 2017-01-05 17:50
 comments: false
 sharing: false
 footer: true
@@ -15,12 +15,6 @@ In 2006 I followed the path of many young kiwis and moved to London with my girl
 
 After several years we moved back to New Zealand where I co-founded [elucidcode](http://elucidcode.com), a mobile app development company. We recently launched [Air Pipes](http://airpip.es), a musical instrument app that climbed to number 1 music and number 7 overall paid app on the UK App Store.
 
-I am now enjoying life as an independent developer and consultant working on iOS and Rails apps. In my spare time I enjoy playing guitar, Xbox and making the most of the amazing outdoor lifestyle that New Zealand has to offer.
+I am now based in Christchurch and work for a San Francisco-based consultancy developing apps for iOS and Rails.
 
-##Hire Me
-
-I'm passionate about creating great software and I get things done!
-
-My development rate is NZ$120 (US$100) per hour.
-
-If you're interested in hiring me to work on your iOS or Rails project, please [get in touch](/contact).
+For more information about my skills and experience, please see my [LinkedIn profile](https://www.linkedin.com/in/tim-ross-78345a4).
