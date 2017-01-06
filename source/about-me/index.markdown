@@ -1,13 +1,12 @@
 ---
 layout: page
 title: "About Me"
-date: 2017-01-05 17:50
 comments: false
 sharing: false
 footer: true
 ---
 <img src="/images/tim_profile.jpg" width="240", height="240" style="float:right;margin-left:20px;">
-I'm a software developer with more than 12 years experience (has it really been that long!?).
+I'm a software developer with more than 15 years of experience developing web and mobile applications.
 
 I taught myself programming on the Commodore 64 when I was 9 years old and created my first web site at 16. In 1998 I went to the University of Canterbury to study Computer Science. However, my passion for web design led me to take a short-cut into the industry by completing the first web technology course at the National College of Design and Technology. In 2000 I got my first job as a web developer.
 
